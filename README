@@ -1,0 +1,84 @@
+# 
+# This file is part of the S370BALEdt distribution.
+# Copyright (c) 2021 James Salvino.
+# 
+# This program is free software: you can redistribute it and/or modify  
+# it under the terms of the GNU General Public License as published by  
+# the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but 
+# WITHOUT ANY WARRANTY; without even the implied warranty of 
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License 
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+#
+# This is a primitive line editor
+# designed for coding IBM S370 BAL source.
+#
+# You can also call the S370BALAsm or
+# the S370BALEmulator so it's almost
+# an IDE (edit - assemble - emulate
+# all in one place)
+#
+# Programmers actually used a line editor
+# similar to this one over 40 years ago.
+#
+# Using the TAB key you can format
+# your assembler source for the
+# expected column layout of:
+# 1     10       16
+# label mnemonic operands  [optional comment]
+#
+# For example, you can type:
+# balr[TAB KEY]r12,0
+#
+# to add this line:
+#          BALR  R12,0
+#
+# Another example, you can type:
+# loop[TAB KEY]mvi[TAB KEY]0(r5),c'0'
+#
+# to add this line:
+# LOOP     MVI   0(R5),C'0'
+#
+# A line that starts with an '*' is
+# assumed to be a comment
+#
+# A line with no TAB charaters
+# is assumed to be an editor command.
+#
+# For example, if you typed:
+#
+# list
+#
+# an enumerated source listing would be 
+# displayed.
+#
+# *********************************************
+# Commands and Editor Directives
+# *********************************************
+#
+# LIST - list source file
+# READ - read in source file overlaying what is
+#        there or inserting after certain line
+# SAVE - write out source file
+# ASSM - assemble source file with S370BALAsm
+# EMUL - run emulation with S370BALEmulator
+# HELP - display help text
+# QUIT - quit this program
+#
+# Edit Commands:
+#  In1 - insert next line after line n1
+#  Dn1 - delete line n1
+#  Dn1,n2 - delete lines n1 to n2 (Block Delete)
+#  En1 - replace line n1 with next line entered
+#  Cn1,n2 - copy line n1 after line n2
+#  Cn1,n2,n3 - copy lines n1 to n2 after line n3 (Block Copy)
+#  Mn1,n2 - move line n1 after line n2
+#  Mn1,n2,n3 - move lines n1 to n2 after line n3 (Block Move)
+#  Gn1/aaa/bbb - on line n1 change text aaa to bbb
+#
+# *********************************************
